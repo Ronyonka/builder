@@ -15,33 +15,52 @@
     }
 </style>
 {% endblock styles %}
-
+{% block logout%}
+<a href="{% url 'logout' %}" style="color: red;">Logout</a>
+{% endblock logout%}
 {% block content %}
 <h1>{{heading}}</h1>
 <div class="row">
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
-        <form action="." class="form-control">
+        <form action="." method="POST" class="form-control">
             {% csrf_token %}
             <label for="item"><h4>Item</h4></label>
-            <input type="text" value="RON" class="form-control" name="item" id="">
+            <select name="item" class="form-control" id="">
+                {% if items%}
+                {% for item in items%}
+                <option value={{item.id}}>{{item}}</option>
+                {% endfor %}
+                {% else %}
+                <option value="">No items in stock yet</option>
+                {% endif %}
+            </select>
             <label for="quantity"><h4>Quantity</h4></label>
             <input type="number" class="form-control" name="quantity" id="">
             <div class="date-time">
                 <div class="date">
-                    <label for="date"><h4>Date</h4></label>
-                    <input type="date" value="{{date}}"    max="{{date}}" class="form-control date" name="date" id="">
-                </div>
-                <div class="time">
-                    <label for="time"><h4>Time</h4></label><br>
-                    <input type="time" value="{{time}}" class="form-control date" max="{{time}}"  name="time" id="">
-                </div>
-                
+                    <label for="dateTime"><h4>Date Time</h4></label>
+                    <input type="datetime-local" class="form-control date" name="dateTime"   id="dateTime">
+                </div>  
             </div>
             <button type="submit" class="btn btn-outline-primary">Save</button>
-            <!-- <button type="submit" class="btn btn-outline-danger">Clear</button> -->
         </form>
     </div>
     <div class="col-lg-2"></div>
 </div>
+
 {% endblock %}
+
+{% block scripts %}
+<script>
+var today = new Date();
+var dd = today.getDate();
+var month = today.getMonth()+1;
+var yyyy = today.getFullYear();
+var hh = today.getHours();
+var mm = today.getMinutes();
+var ss = today.getSeconds();
+var x = yyyy+"-"+month+"-"+dd+"T"+hh+":"+mm+":"+ss
+console.log(x)
+</script>
+{% endblock scripts %}
