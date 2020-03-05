@@ -21,7 +21,7 @@ class Delivery(models.Model):
     dateTime = models.DateTimeField(auto_now=False)
     # time = models.TimeField(auto_now=False)
     class Meta:
-        ordering = ('dateTime', )
+        ordering = ('-dateTime', )
 
     # def extract_date(delivery):
     #     'extracts the starting date from a delivery'
