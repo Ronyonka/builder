@@ -16,13 +16,14 @@ Here is a link to the live website: <https://evening-lowlands-22187.herokuapp.co
 
 The project requires a user to register/login to be able to use it.\
 The default login credentials are:\
+\
 **Username:** **demo**\
 **Passoword:** **account2020**\
 \
 The user can then log in items that come to the building site Selecting their names, entering the quantity and the date and time they arrived.\
 They will be able to see this in the *'logs'* tab
 
-## Setup/Installation Requirements
+## Setup/Installation
 ### Prerequisites
 You need the following to work on the project: -
 * Python version 3+
