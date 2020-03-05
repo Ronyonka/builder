@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block logout%}
+<a href="{% url 'signup' %}" style="color: blueviolet;">Sign Up</a>
+{% endblock logout%}
+
 {%  block content %}
 <h2>Login</h2>
 <form method="post">
