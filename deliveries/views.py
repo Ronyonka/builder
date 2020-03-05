@@ -51,6 +51,7 @@ def home(request):
 
 @login_required
 def delivery_logs(request):
+    user = request.user
     heading = "Delivery Logs"
     try:
         deliveries = Delivery.objects.filter(customer=request.user)
@@ -58,6 +59,7 @@ def delivery_logs(request):
         deliveries = []
     dates_list = set([i.dateTime.date for i in deliveries])
     context = {
+        'user':user,
         'heading':heading,
         'deliveries':deliveries
     }
