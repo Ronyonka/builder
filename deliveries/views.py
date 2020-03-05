@@ -52,7 +52,10 @@ def home(request):
 @login_required
 def delivery_logs(request):
     heading = "Delivery Logs"
-    deliveries = Delivery.objects.all()
+    try:
+        deliveries = Delivery.objects.filter(customer=request.user)
+    except Delivery.DoesNotExist:
+        deliveries = []
     dates_list = set([i.dateTime.date for i in deliveries])
     context = {
         'heading':heading,
